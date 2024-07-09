@@ -1,0 +1,227 @@
+:root {
+    --general-text: #312C27;
+    --accent-text: #1F1711;
+    --general-bg: #FFF9F4;
+    --accent-bg: #FFE0CB;
+    --accent-color: #FFA55C;
+    --accent-color2: #CEAAD0;
+    --input-color: #AC907A;
+    --border-radius: 20px;
+}
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5vh;
+}
+.body {
+    font-family: "Montserrat", "Arial", sans-serif;
+    line-height: 1.5;
+    color: var(--general-text);
+    background-color: var(--general-bg);
+}
+.body--opened-menu {
+    overflow: hidden;
+}
+.body--opened-modal {
+    overflow: hidden;
+}
+
+.wrapper {
+    min-height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.container {
+    max-width: 1310px; /* change + padding-left (15) + padding-right (15)*/
+    padding: 0 15px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+/* =========================================================== */
+.main__about{
+    padding: 140px 0;
+}
+.main__program,
+.main__gallery,
+.main__testimonials {
+    padding-bottom: 145px;
+}
+
+.burger-icon {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    z-index: 11;
+}
+.burger-icon span,
+.burger-icon span::before,
+.burger-icon span::after {
+    display: block;
+    width: 30px;
+    height: 3px;
+    border-radius: 100px;
+    background-color: var(--general-text);
+
+    transition: transform .4s, background-color .4s;
+}
+.burger-icon span {
+    position: relative;
+}
+.burger-icon span::before,
+.burger-icon span::after {
+    content: '';
+    position: absolute;
+}
+.burger-icon span::before {
+    top: -8px;
+}
+.burger-icon span::after {
+    bottom: -8px;
+}
+.body--opened-menu .burger-icon span{
+    background-color: transparent;
+}
+.body--opened-menu .burger-icon span::before {
+    top: 0px;
+    transform: rotate(45deg);
+}
+.body--opened-menu .burger-icon span::after {
+    bottom: 0px;
+    transform: rotate(-45deg);
+}
+.title {
+    font-family: 'Gabriola';
+    font-size: 74px;
+    line-height: 0.82;
+    color: var(--accent-text);
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    border-radius: 60px;
+    text-align: center;
+    height: 62px;
+    padding: 3px 15px;
+    transition: background-color .4s;
+    width: 100%;
+}
+.button:hover{
+    background-color: #FF9138;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: #00000048;
+    z-index: 11;
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility .4s, opacity .4s;
+}
+.body--opened-modal .modal {
+    opacity: 1;
+    visibility: visible;
+}
+.modal__window {
+    position: relative;
+    background-color: var(--general-bg);
+    border-radius: var(--border-radius);
+    padding: 0 60px 60px;
+    max-width: 428px;
+}
+.modal__cancel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.modal__cancel path,
+.modal__cancel rect  {
+    transition: stroke .4s;
+}
+.modal__cancel:hover path,
+.modal__cancel:hover rect  {
+    stroke: var(--input-color);
+}
+.modal__img {
+    margin: -65px 0 15px 12px;
+    max-width: 100%;
+}
+.modal__title {
+    font-family: 'Gabriola';
+    font-size: 42px;
+    line-height: .9;
+    color: var(--accent-text);
+    margin-bottom: 10px;
+}
+.modal__text {
+    margin-bottom: 30px;
+}
+.field {
+    display: block;
+    position: relative;
+}
+.modal__form-label {
+    margin-bottom: 10px;
+}
+.field span {
+    position: absolute;
+    top: 12px;
+    left: 28px;
+    font-size: 11px;
+    color: var(--input-color);
+    
+    transition: opacity .4s, visibility .4s;
+    opacity: 0;
+    visibility: hidden;
+}
+.field__input {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    padding: 19px 42px 19px 28px;
+    border-radius: 100px;
+    border: 1px solid var(--input-color);
+    font-size: 16px;
+    transition: all .4s;
+}
+.field__input::placeholder {
+    color: var(--input-color);
+    transition: color .4s;
+}
+.field__input:hover {
+    border-color: var(--accent-color);
+}
+.field__input:hover::placeholder {
+    color: var(--accent-color);
+}
+.field__input:focus {
+    padding: 26px 42px 12px 28px;
+    color: var(--general-text);
+}.field__input:focus::placeholder {
+    color: var(--input-color);
+}
+.field__input:focus ~ span{
+    opacity: 1;
+    visibility: visible;
+}
